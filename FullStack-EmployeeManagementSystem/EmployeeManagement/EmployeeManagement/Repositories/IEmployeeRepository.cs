@@ -15,4 +15,3 @@ namespace EmployeeManagement.Repositories
         Task DeleteEmployeeAsync(int id);
     }
 }
-}
