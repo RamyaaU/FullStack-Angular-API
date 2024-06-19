@@ -2,7 +2,7 @@
 
 namespace EmployeeManagement.Repositories
 {
-    public interface IRepository
+    public interface IEmployeeRepository
     {
 
         Task<IEnumerable<Employee>> GetAllAsync();
