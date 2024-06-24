@@ -14,18 +14,33 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add CORS policy
+//// Add CORS policy
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("MyCors", policyBuilder =>
+//    {
+//        policyBuilder.WithOrigins("https://localhost:4200")
+//            .AllowAnyMethod()
+//            .AllowAnyHeader();
+//    });
+//});
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("MyCors", policyBuilder =>
+    options.AddPolicy("MyCors", builder =>
     {
-        policyBuilder.WithOrigins("https://localhost:4200")
-            .AllowAnyMethod()
-            .AllowAnyHeader();
+        builder.WithOrigins("http://localhost:4200")
+        //builder.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
     });
 });
 
+
+
 var app = builder.Build();
+
+app.UseCors("MyCors");
 
 if (app.Environment.IsDevelopment())
 {
@@ -36,7 +51,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseCors("MyCors");
+
 
 app.MapControllers(); // Map controllers
 
