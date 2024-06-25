@@ -6,21 +6,20 @@
             <th>FirstName</th>
             <th>LastName</th>
             <th>Phone</th>
-            <th>Email</th>z
+            <th>Email</th>
             <th>Position</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            @for(emp of employees; track emp.id)
-            {
-            <td>{{emp.id}}</td>
-            <td>{{emp.firstName}}</td>
-            <td>{{emp.lastName}}</td>
-            <td>{{emp.phone}}</td>
-            <td>{{emp.email}}</td>
-            <td>{{emp.position}}</td>
-            }
-        </tr>
+        @for (emp of employees; track emp.id) {
+            <tr>
+              <td>{{ emp.id }}</td>
+              <td>{{ emp.firstName }}</td>
+              <td>{{ emp.lastName }}</td>
+              <td>{{ emp.phone }}</td>
+              <td>{{ emp.email }}</td>
+              <td>{{ emp.position }}</td>
+            </tr>
+          }
     </tbody>
 </table>
