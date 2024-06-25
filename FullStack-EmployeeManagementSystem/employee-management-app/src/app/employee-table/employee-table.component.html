@@ -1,3 +1,26 @@
-<p>employee-table works!</p>
-
-
+<h2>Employees</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Phone</th>
+            <th>Email</th>z
+            <th>Position</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @for(emp of employees; track emp.id)
+            {
+            <td>{{emp.id}}</td>
+            <td>{{emp.firstName}}</td>
+            <td>{{emp.lastName}}</td>
+            <td>{{emp.phone}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.position}}</td>
+            }
+        </tr>
+    </tbody>
+</table>

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../model/employee';
 import { EmployeeService } from '../employee.service';
+import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, NgFor],
   templateUrl: './employee-table.component.html',
   styleUrl: './employee-table.component.css'
 })
