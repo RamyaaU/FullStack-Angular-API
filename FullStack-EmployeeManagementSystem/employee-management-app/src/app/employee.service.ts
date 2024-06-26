@@ -21,4 +21,10 @@ export class EmployeeService {
     return this.http.get<Employee[]>(this.apiUrl)
   }
 
+  //a parameter employee is passed to take all the employee details
+  ////returns an Observable that allows you to handle the server's response when the employee is successfully created
+  createEmployee(employee: Employee): Observable<Employee>
+  {
+    return this.http.post<Employee>(this.apiUrl, employee);
+  }
 }
