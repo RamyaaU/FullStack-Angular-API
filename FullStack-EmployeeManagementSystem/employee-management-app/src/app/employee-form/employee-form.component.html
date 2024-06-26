@@ -1,1 +1,11 @@
-<p>employee-form works!</p>
+<h2>Create Employee</h2>
+
+
+<!-- creates a form -->
+<form (ngSubmit)="onSubmit()">
+    <!-- (ngSubmit)="onSubmit()" -- means when the form is submitted it calls the onsubmit function -->
+    <input type="text" name="firstName" [(ngModel)]="employee.firstName" />
+    <!-- [(ngModel)]="employee.firstName - whatever you input in the field it will update -->
+    <button type="submit">Create</button>
+</form>
+
