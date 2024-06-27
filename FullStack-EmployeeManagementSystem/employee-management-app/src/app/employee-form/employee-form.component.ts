@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Employee } from '../../model/employee';
 //import the service 
 import { EmployeeService } from '../employee.service';
 import { response } from 'express';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 
@@ -26,13 +26,36 @@ export class EmployeeFormComponent {
     position: ''
   }
 
+  isEditing: boolean = false;
   errorMessage : string = " ";
 
   //inject the service in component's constructor 
-  constructor(private employeeService : EmployeeService, private router : Router)
+  //router is used for navigation
+	//route is teh current route where the user is located right now 
+  constructor(private employeeService : EmployeeService, private router : Router,
+    private route :  ActivatedRoute
+  )
   {
   }
   
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((result) => 
+      {
+        const id = result.get('id');
+
+        if(id) 
+          {
+            //editing employee
+            this.isEditing = true;
+            console.log("Is editing");
+          }
+          else{
+            //create new employee
+            console.log("Is creating new");
+          }
+      });
+  }
+
   //for the form submission this will be trigerred
   onSubmit()  : void {
     console.log(this.employee)
