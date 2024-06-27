@@ -48,6 +48,13 @@ export class EmployeeFormComponent {
             //editing employee
             this.isEditing = true;
             console.log("Is editing");
+
+            this.employeeService.getEmployeeById(Number(id)).subscribe
+            ({
+              next : (result) => this.employee = result,
+              error: (err) => 
+                this.errorMessage = `Error : ${err.status} - ${err.message}`
+            })
           }
           else{
             //create new employee
@@ -57,22 +64,52 @@ export class EmployeeFormComponent {
   }
 
   //for the form submission this will be trigerred
-  onSubmit()  : void {
-    console.log(this.employee)
+  // onSubmit()  : void {
 
-    //use the service method in the component 
-    this.employeeService.createEmployee(this.employee)
-    //subscribe((result) => console.log(result));
-    .subscribe({
-      //first of all subscribe is subscribing to create employee observable
-      //it can execute success or error 
-      next: (response) => {
-        this.router.navigate(['/'])
-      },
-      error: (err) => {
-        console.error(err);
-        this.errorMessage = `Error : ${err.status} - ${err.message}`;
-      }
-    });
+    
+
+  //   console.log(this.employee)
+
+  //   //use the service method in the component 
+  //   this.employeeService.createEmployee(this.employee)
+  //   //subscribe((result) => console.log(result));
+  //   .subscribe({
+  //     //first of all subscribe is subscribing to create employee observable
+  //     //it can execute success or error 
+  //     next: (response) => {
+  //       this.router.navigate(['/'])
+  //     },
+  //     error: (err) => {
+  //       console.error(err);
+  //       this.errorMessage = `Error : ${err.status} - ${err.message}`;
+  //     }
+  //   });
+  // }
+
+  onSubmit() : void {
+    if(this.isEditing){
+      this.employeeService.editEmployee(this.employee)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.error(err);
+          this.errorMessage = `Error occured during updating (${err.status})`;
+        }
+      });
+    } else {
+      // creating
+      this.employeeService.createEmployee(this.employee)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.error(err);
+          this.errorMessage = `Error occured during creating (${err.status})`;
+        }
+      });
+    }    
   }
 }
