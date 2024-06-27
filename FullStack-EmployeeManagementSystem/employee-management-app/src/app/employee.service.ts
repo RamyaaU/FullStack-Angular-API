@@ -27,4 +27,12 @@ export class EmployeeService {
   {
     return this.http.post<Employee>(this.apiUrl, employee);
   }
+
+  //id is the parameter and void beacuse - observable does not emit any bvalue 
+  //when delete request is successful
+  deleteEmployee(id: number) : Observable<void>
+  {
+    //ex url - https://api.example.com/employees/123 hence the literals are used 
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

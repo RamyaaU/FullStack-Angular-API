@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../model/employee';
 import { EmployeeService } from '../employee.service';
 import { CommonModule, NgFor } from '@angular/common';
+import { response } from 'express';
 
 @Component({
   selector: 'app-employee-table',
@@ -36,6 +37,24 @@ export class EmployeeTableComponent {
 
     });
 
+    }
+
+    deleteEmployee(id: number) : void   {
+      //call the deleteEmployee method from the employeeService, passing the employee id.
+      this.employeeService.deleteEmployee(id).
+      subscribe({
+        next: (response) => {
+          //if the request is successful, filter out the deleted employee from the employees array.
+          this.employees = this.employees.filter(e => e.id !== id);
+        },
+        error : (err) => 
+          {
+            console.error('Error deleting employee', err);
+          }
+      })
+
+    }
+
     // ngOnInit() {
     //   // Step 1: Tell the service to get the employee data
     //   this.employeeService.getEmployees().subscribe((data: Employee[]) => {
@@ -43,5 +62,5 @@ export class EmployeeTableComponent {
     //     this.employees = data;
     //   });
     // }
-  }
+  
 }
