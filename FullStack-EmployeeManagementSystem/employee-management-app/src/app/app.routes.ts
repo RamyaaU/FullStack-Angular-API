@@ -8,6 +8,7 @@ export const routes: Routes = [
     {path: '', component : EmployeeTableComponent},
     //if given create in url then it will redirect to create component of employee form
     {path: 'create', component: EmployeeFormComponent},
+    {path: 'edit/:id', component: EmployeeFormComponent},
     //if given employees in url then it will redirect to root / home component 
     {path: 'employees', redirectTo: '', pathMatch:'full'}
 ];

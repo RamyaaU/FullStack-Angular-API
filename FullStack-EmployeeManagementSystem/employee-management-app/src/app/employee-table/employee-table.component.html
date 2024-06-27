@@ -20,7 +20,10 @@
               <td>{{ emp.phone }}</td>
               <td>{{ emp.email }}</td>
               <td>{{ emp.position }}</td>
-              <td><button (click)="deleteEmployee(emp.id)">Delete</button></td>
+              <td>
+                <button (click)="deleteEmployee(emp.id)">Delete</button>
+                <button (click)="editEmployee(emp.id)">Update</button>
+            </td>
             </tr>
           }
     </tbody>

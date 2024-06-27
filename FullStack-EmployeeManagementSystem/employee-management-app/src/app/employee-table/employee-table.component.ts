@@ -3,11 +3,12 @@ import { Employee } from '../../model/employee';
 import { EmployeeService } from '../employee.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { response } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule, NgFor, ],
   templateUrl: './employee-table.component.html',
   styleUrl: './employee-table.component.css'
 })
@@ -16,7 +17,7 @@ export class EmployeeTableComponent {
 
   employees: Employee[] = [];
 
-  constructor(private employeeService : EmployeeService) {}
+  constructor(private employeeService : EmployeeService, private router : Router) {}
 
   //ngOnInit - a lifecycle hook - will be called once the component has been initialized 
   ngOnInit() {
@@ -53,6 +54,10 @@ export class EmployeeTableComponent {
           }
       })
 
+    }
+
+    editEmployee(id : number) : void{
+      this.router.navigate(['/edit', id]);
     }
 
     // ngOnInit() {
