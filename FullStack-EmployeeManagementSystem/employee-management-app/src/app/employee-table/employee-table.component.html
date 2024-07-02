@@ -1,5 +1,13 @@
-<h2>Employees</h2>
-<table>
+<h2 class="text-center my -5">Employees</h2>
+
+<div class="card">
+
+    <div class="card-header">
+        <p class="fs-5">Overview</p>
+    </div>
+
+    <div class="card-body">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Id</th>
@@ -21,10 +29,12 @@
               <td>{{ emp.email }}</td>
               <td>{{ emp.position }}</td>
               <td>
-                <button (click)="deleteEmployee(emp.id)">Delete</button>
-                <button (click)="editEmployee(emp.id)">Update</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp.id)">Delete</button>
+                <button class="btn btn-primary btn-sm m-1" (click)="editEmployee(emp.id)">Update</button>
             </td>
             </tr>
           }
     </tbody>
 </table>
+</div>
+</div>
