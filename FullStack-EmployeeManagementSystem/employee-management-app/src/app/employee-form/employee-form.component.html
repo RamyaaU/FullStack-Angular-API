@@ -1,34 +1,34 @@
-<h2>{{isEditing? 'Edit' : 'Create'}} Employee</h2>
+<h2 class="text-center my-5">{{isEditing? 'Edit' : 'Create'}} Employee</h2>
 
 <div *ngIf="errorMessage != ' '">
     {{errorMessage}}
 </div>
 
 <!-- creates a form -->
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" class="border rounded p-5 w-50 mb-5 mx-auto">
 
-    <div>
-        <label>First Name </label>
+    <div class="mb-3">
+        <label class="form-label">First Name </label>
         <!-- (ngSubmit)="onSubmit()" -- means when the form is submitted it calls the onsubmit function -->
-        <input type="text" name="firstName" [(ngModel)]="employee.firstName" />
+        <input class="form-control" type="text" name="firstName" [(ngModel)]="employee.firstName" />
         <!-- [(ngModel)]="employee.firstName - whatever you input in the field it will update -->
     </div>
 
-    <div>
-        <label>Last Name </label>
-        <input type="text" name="lastName" [(ngModel)]="employee.lastName" />
+    <div class="mb-3">
+        <label  class="form-label">Last Name </label>
+        <input class="form-control" type="text" name="lastName" [(ngModel)]="employee.lastName" />
+    </div>
+
+    <div class="mb-3">
+        <label  class="form-label">Phone </label>
+        <input class="form-control" type="text" name="phone" [(ngModel)]="employee.phone" />
     </div>
 
     <div>
-        <label>Phone </label>
-        <input type="text" name="phone" [(ngModel)]="employee.phone" />
+        <label  class="form-label">Position </label>
+        <input  class="form-control" type="text" name="position" [(ngModel)]="employee.position" />
     </div>
 
-    <div>
-        <label>Position </label>
-        <input type="text" name="position" [(ngModel)]="employee.position" />
-    </div>
-
-    <button type="submit">{{isEditing? 'Edit' : 'Create'}}</button>
+    <button class="btn btn-primary m-2" type="submit">{{isEditing? 'Edit' : 'Create'}}</button>
 </form>
 
